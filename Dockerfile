@@ -40,4 +40,9 @@ RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 COPY jenkins-slave /usr/local/bin/jenkins-slave
 
 RUN chmod 777 /usr/local/bin/jenkins-slave
+RUN sudo apt-get update && sudo apt-get install -y apt-transport-https
+RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+RUN echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+RUN sudo apt-get update
+RUN sudo apt-get install -y kubectl
 ENTRYPOINT ["/usr/local/bin/jenkins-slave"]
