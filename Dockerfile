@@ -39,5 +39,5 @@ RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 COPY jenkins-slave /usr/local/bin/jenkins-slave
 
-USER jenkins
+RUN chmod 777 /usr/local/bin/jenkins-slave
 ENTRYPOINT ["/usr/local/bin/jenkins-slave"]
