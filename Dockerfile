@@ -1,6 +1,6 @@
-FROM jenkins/slave:3.15-1
-MAINTAINER ringtail <zhongwei.lzw@alibaba-inc.com>
-LABEL Description="This is a base image, which allows connecting Jenkins agents via JNLP protocols" Vendor="Jenkins project" Version="3.15"
+FROM jenkins/slave:latest
+MAINTAINER yuleaugustine <yuleaugustine@gmail.com>
+LABEL Description="This is a base image, which allows connecting Jenkins agents via JNLP protocols" Vendor="Jenkins project" Version="latest"
 
 USER root
 
@@ -38,4 +38,4 @@ RUN curl -fL -o docker.tgz "https://download.docker.com/linux/static/${DOCKER_CH
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 COPY jenkins-slave /usr/local/bin/jenkins-slave
-ENTRYPOINT ["jenkins-slave"]
+ENTRYPOINT ["/usr/local/bin/jenkins-slave"]
