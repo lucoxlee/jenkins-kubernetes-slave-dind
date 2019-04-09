@@ -38,4 +38,5 @@ RUN curl -fL -o docker.tgz "https://download.docker.com/linux/static/${DOCKER_CH
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 COPY jenkins-slave /usr/local/bin/jenkins-slave
+RUN chmod 777 /usr/local/bin/jenkins-slave
 ENTRYPOINT ["jenkins-slave"]
